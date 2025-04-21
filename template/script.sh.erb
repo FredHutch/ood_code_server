@@ -54,7 +54,14 @@ if [[ -f "$CPP_FILE" ]]; then
 echo "$(date): Started code-server"
 echo ""
 
-apptainer run --env PASSWORD=$PASSWORD https://sif-registry.fredhutch.org/code-server.sif /usr/local/code-server/bin/code-server \
+apptainer run \
+    --env PASSWORD=$PASSWORD \
+    --bind /fh/fast:/fh/fast \
+    --bind /fh/working:/fh/working \
+    --bind /fh/secure:/fh/secure \
+    --bind /hpc/temp:/hpc/temp \
+    https://sif-registry.fredhutch.org/code-server.sif \
+    /usr/local/code-server/bin/code-server \
     --auth="none" \
     --bind-addr="0.0.0.0:${port}" \
     --disable-telemetry \
