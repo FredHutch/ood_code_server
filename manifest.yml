@@ -4,7 +4,7 @@ category: Interactive Apps
 subcategory: Servers
 role: batch_connect
 description: |
-  This app will launch a [VS Code] server using [Code Server] on the cluster.
+  This app will launch [VS Code] in the browser using [Code Server] on the cluster.
 
   [VS Code]: https://code.visualstudio.com/
   [Code Server]: https://coder.com/
