@@ -1,13 +1,20 @@
 
 ---
-cluster: 
+cluster:
   - "gizmo"
 form:
   - auto_accounts
   - bc_num_hours
   - working_dir
   - version
+  - want_gpu
 attributes:
+  want_gpu:
+    widget: "check_box"
+    label: "Request a GPU"
+    help: |
+      Request a GPU for your VS Code session. The default is no GPU.
+    value: false
   version:
     widget: "select"
     label: "Codeserver Version"
