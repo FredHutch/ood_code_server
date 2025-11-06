@@ -4,11 +4,18 @@ cluster:
   - "gizmo"
 form:
   - auto_accounts
-  - bc_num_hours
+  - num_days
   - working_dir
   - version
   - want_gpu
 attributes:
+  num_days:
+      value: 1
+      widget: "number_field"
+      label: "Number of days to run"
+      min: 1
+      max: 7
+      step: 1
   want_gpu:
     widget: "check_box"
     label: "Request a GPU"
