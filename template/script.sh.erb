@@ -12,7 +12,16 @@ if ! working_dir.exist?
 elsif working_dir.file?
     working_dir = working_dir.parent
 end
+
+
+nv = ""
+if context.want_gpu == "1"
+  nv = " --nv "
+end
+
+
 %>
+
 
 CODE_SERVER_DATAROOT="$HOME/.local/share/code-server"
 mkdir -p "$CODE_SERVER_DATAROOT/extensions"
@@ -54,13 +63,13 @@ if [[ -f "$CPP_FILE" ]]; then
 echo "$(date): Started code-server"
 echo ""
 
-apptainer run \
+apptainer run <%= nv %> \
     --env PASSWORD=$PASSWORD \
     --bind /fh/fast:/fh/fast \
     --bind /fh/working:/fh/working \
     --bind /fh/secure:/fh/secure \
     --bind /hpc/temp:/hpc/temp \
-    https://sif-registry.fredhutch.org/code-server.sif \
+    https://sif-registry.fredhutch.org/code-server-with-cuda.sif \
     /usr/local/code-server/bin/code-server \
     --auth="none" \
     --bind-addr="0.0.0.0:${port}" \
